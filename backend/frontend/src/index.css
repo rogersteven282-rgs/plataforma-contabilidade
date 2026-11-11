@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+:root {
+  /* Cor — paleta "caderno escolar" em azul claro */
+  --bg: #D9E6FB;          /* fundo azul claro, mais carregado que o cinza anterior */
+  --bg-soft: #C7DAF8;     /* elevação sobre o bg */
+  --paper: #FFFFFF;       /* página de caderno */
+  --paper-soft: #F4F8FE;  /* linha/zebra sobre o paper */
+  --ink: #16202E;         /* texto sobre paper */
+  --ink-soft: #5B6472;    /* texto secundário sobre paper */
+  --cream: #16202E;       /* texto sobre bg claro */
+  --cream-soft: #5B6472;  /* texto secundário sobre bg claro */
+  --mango: #1A73E8;       /* acção primária — azul */
+  --mango-ink: #FFFFFF;   /* texto sobre mango */
+  --mango-soft: #E8F0FE;  /* fundo suave sobre azul */
+  --teal: #1F7A6C;        /* pago / ativo */
+  --teal-soft: #E4F2EE;   /* fundo de estado pago */
+  --brick: #B5482F;       /* expirado / rejeitado */
+  --brick-soft: #F7E7E2;  /* fundo de estado expirado/rejeitado */
+  --amber-soft: #FBEED9;  /* fundo de estado pendente */
+
+  font-family: 'Public Sans', system-ui, sans-serif;
+  color-scheme: light;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--cream);
+  -webkit-font-smoothing: antialiased;
+}
+
+.font-display {
+  font-family: 'Public Sans', system-ui, sans-serif;
+}
+
+.font-mono-ref {
+  font-family: 'IBM Plex Mono', ui-monospace, monospace;
+  letter-spacing: 0.04em;
+}
+
+/* Foco visível para acessibilidade de teclado */
+:focus-visible {
+  outline: 2px solid var(--mango);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Recorte perfurado do bilhete (elemento-assinatura) */
+.ticket-notch {
+  position: relative;
+}
+.ticket-notch::before,
+.ticket-notch::after {
+  content: "";
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  background: var(--bg);
+  border-radius: 999px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.ticket-notch::before { left: -9px; }
+.ticket-notch::after { right: -9px; }
+
+.campo {
+  width: 100%;
+  background: var(--paper);
+  color: var(--ink);
+  border-radius: 0.75rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.9375rem;
+  border: 1px solid transparent;
+}
+.campo::placeholder { color: var(--ink-soft); }
+.campo:focus { border-color: var(--mango); outline: none; }

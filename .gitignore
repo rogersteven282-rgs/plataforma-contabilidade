@@ -1,0 +1,7 @@
+﻿node_modules/
+.env
+.env.local
+**/.env
+frontend/dist/
+*.log
+package-lock.json
